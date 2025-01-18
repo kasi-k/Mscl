@@ -5,8 +5,9 @@ import { TbBulb } from "react-icons/tb";
 import { GrLogin } from "react-icons/gr";
 import { FiFile } from "react-icons/fi";
 import { BsGlobe } from "react-icons/bs";
+import ContactUs from "./ContactUs";
 const LandingPage = () => {
-  const [language, setLanguage] = useState("en"); 
+  const [language, setLanguage] = useState("en");
   const [activeLink, setActiveLink] = useState("");
 
   const translations = {
@@ -95,52 +96,55 @@ const LandingPage = () => {
   };
 
   const handleLanguageChange = (event) => {
-    setLanguage(event.target.value); 
+    setLanguage(event.target.value);
   };
 
   const handleLinkClick = (link) => {
-    setActiveLink(link); 
+    setActiveLink(link);
   };
 
   return (
     <>
-      <div className="container mx-auto px-6 font-roboto ">
-        <header className="fixed top-0 left-0 z-10 w-full bg-white bg-opacity-80 mx-4 ">
+      <div className="container mx-auto  px-6 font-roboto ">
+        <header className="fixed top-0 left-0 z-10 w-full bg-white bg-opacity-80 px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <img src={Logo} alt="Madurai city" className="size-10" />
+              <img src={Logo} alt="Madurai city" className="size-12" />
               <h1 className="text-[#21409A] font-medium text-lg my-4">
                 {translations[language].title}
               </h1>
             </div>
-            <nav className="flex gap-4 font-normal text-lg items-center">
-          <a
-            href=""
-            onClick={() => handleLinkClick("")}
-            className={`px-5 py-2 rounded-md ${
-              activeLink === "" ? "text-white bg-[#21409A]" : "text-black"
-            }`}
-          >
-            {translations[language].home}
-          </a>
-          <a
-            href="/dashboard"
-            onClick={() => handleLinkClick("/dashboard")}
-            className={`px-3 py-2 rounded-lg ${
-              activeLink === "/dashboard" ? "text-white bg-[#21409A]" : "text-black"
-            }`}
-          >
-            {translations[language].dashboard}
-          </a>
-          <a
-            href="/contactus"
-            onClick={() => handleLinkClick("/contactus")}
-            className={`px-3 py-2 rounded-lg ${
-              activeLink === "/contactus" ? "text-white bg-[#21409A]" : "text-black"
-            }`}
-          >
-            {translations[language].contactUs}
-          </a>
+            <nav className="flex gap-4 font-normal text-lg items-center cursor-pointer">
+              <a
+                href=""
+                onClick={() => handleLinkClick("")}
+                className={`px-5 py-2 rounded-md ${
+                  activeLink === "" ? "text-white bg-[#21409A]" : "text-black"
+                }`}
+              >
+                {translations[language].home}
+              </a>
+              <a
+                href="/dashboard"
+                onClick={() => handleLinkClick("/dashboard")}
+                className={`px-3 py-2 rounded-lg ${
+                  activeLink === "/dashboard"
+                    ? "text-white bg-[#21409A]"
+                    : "text-black"
+                }`}
+              >
+                {translations[language].dashboard}
+              </a>
+              <a
+                onClick={() => handleLinkClick("/contactus")}
+                className={`px-3 py-2 rounded-lg ${
+                  activeLink === "/contactus"
+                    ? "text-white bg-[#21409A]"
+                    : "text-black"
+                }`}
+              >
+                {translations[language].contactUs}
+              </a>
               <div className="flex items-center gap-2">
                 <BsGlobe />
                 <select
@@ -156,69 +160,73 @@ const LandingPage = () => {
           </div>
         </header>
 
-        <main className="pt-16 space-y-20">
-          <section className="relative ">
-            <div>
-              <img
-                src={MsclMain}
-                alt="Madurai city"
-                className="w-full h-auto"
-              />
-              <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 grid grid-cols-3 gap-6 bg-white p-6 w-4/5 rounded-xl shadow-md">
-                <button className="px-8 py-8 flex flex-col items-center justify-center gap-2 bg-[#E6D590] rounded-lg">
-                  <div className="bg-[#21409A] rounded-full px-4 py-4 ">
-                <TbBulb 
-                    className="size-6 text-[#E6D590]"
-                  />
-                  </div>
-                  <p>{translations[language].grievance}</p>
-                </button>
-                <button className="px-8 py-8 flex flex-col items-center justify-center gap-2 bg-[#E6D590] rounded-lg">
-                <div className="bg-[#21409A] rounded-full px-4 py-4 ">
-                <GrLogin 
-                    className="size-6 text-[#E6D590] "
-                  />
-                  </div>
-                  <p>{translations[language].fileGrievance}</p>
-                </button>
-                <button className="px-8 py-8 flex flex-col items-center justify-center gap-2 bg-[#E6D590] rounded-lg">
-                <div className="bg-[#21409A] rounded-full px-4 py-4 ">
-                < FiFile
-                    className="size-6 text-[#E6D590]"
-                  />
-                  </div>
-                  <p>{translations[language].officerLogin}</p>
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <section className="text-center">
-            <h2 className="font-bold text-2xl mb-8">
-              {translations[language].stepsTitle}
-            </h2>
-            <div className="grid grid-cols-2 gap-10 w-4/5 mx-auto">
-              {[1, 2, 4, 3].map((step) => (
-                <div
-                  className="flex justify-center items-center p-6 bg-[#FFF5CE] rounded-lg"
-                  key={step}
-                >
-                  <div className="bg-white shadow-md px-8 py-10 text-center w-full space-y-2">
-                    <h3 className="font-bold text-xl text-[#21409A]">
-                      {translations[language][`step${step}`].title}
-                    </h3>
-                    <h1 className="font-semibold text-lg">
-                      {translations[language][`step${step}`].heading}
-                    </h1>
-                    <p className="text-[#575757] font-normal text-sm">
-                      {translations[language][`step${step}`].description}
-                    </p>
-                  </div>
+        {/* homepage content */}
+        {activeLink === "" && (
+          <main className="pt-16 space-y-20 ">
+            <section className="relative ">
+              <div>
+                <img
+                  src={MsclMain}
+                  alt="Madurai city"
+                  className="w-full h-auto"
+                />
+                <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 grid grid-cols-3 gap-6 bg-white p-6 w-4/5 rounded-xl shadow-md">
+                  <button className="px-8 py-8 flex flex-col items-center justify-center gap-2 bg-[#E6D590] rounded-lg">
+                    <div className="bg-[#21409A] rounded-full px-4 py-4 ">
+                      <TbBulb className="size-6 text-[#E6D590]" />
+                    </div>
+                    <p>{translations[language].grievance}</p>
+                  </button>
+                  <button className="px-8 py-8 flex flex-col items-center justify-center gap-2 bg-[#E6D590] rounded-lg">
+                    <div className="bg-[#21409A] rounded-full px-4 py-4 ">
+                      <GrLogin className="size-6 text-[#E6D590] " />
+                    </div>
+                    <p>{translations[language].fileGrievance}</p>
+                  </button>
+                  <button className="px-8 py-8 flex flex-col items-center justify-center gap-2 bg-[#E6D590] rounded-lg">
+                    <div className="bg-[#21409A] rounded-full px-4 py-4 ">
+                      <FiFile className="size-6 text-[#E6D590]" />
+                    </div>
+                    <p>{translations[language].officerLogin}</p>
+                  </button>
                 </div>
-              ))}
-            </div>
-          </section>
-        </main>
+              </div>
+            </section>
+
+            <section className="text-center">
+              <h2 className="font-bold text-2xl mb-8">
+                {translations[language].stepsTitle}
+              </h2>
+              <div className="grid grid-cols-2 gap-10 w-4/5 mx-auto">
+                {[1, 2, 4, 3].map((step) => (
+                  <div
+                    className="flex justify-center items-center p-6 bg-[#FFF5CE] rounded-lg"
+                    key={step}
+                  >
+                    <div className="bg-white shadow-md px-8 py-10 text-center w-full space-y-2">
+                      <h3 className="font-bold text-xl text-[#21409A]">
+                        {translations[language][`step${step}`].title}
+                      </h3>
+                      <h1 className="font-semibold text-lg">
+                        {translations[language][`step${step}`].heading}
+                      </h1>
+                      <p className="text-[#575757] font-normal text-sm">
+                        {translations[language][`step${step}`].description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </main>
+        )}
+
+        {/* Contact us content */}
+        {activeLink === "/contactus" && (
+          <main className="pt-16">
+            <ContactUs language={language}/>
+          </main>
+        )}
       </div>
       <footer className="mt-12 text-white bg-[#21409A] font-roboto">
         <div className="mx-8 py-6 space-y-4">
@@ -238,7 +246,6 @@ const LandingPage = () => {
         </div>
       </footer>
       ;
-    
     </>
   );
 };
