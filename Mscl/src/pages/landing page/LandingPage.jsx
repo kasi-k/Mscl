@@ -6,6 +6,10 @@ import { GrLogin } from "react-icons/gr";
 import { FiFile } from "react-icons/fi";
 import { BsGlobe } from "react-icons/bs";
 import ContactUs from "./ContactUs";
+import Terms from "./Terms";
+import PrivacyPolicy from "./PrivacyPolicy";
+import AboutUs from "./AboutUs";
+import { Link } from "react-router-dom";
 const LandingPage = () => {
   const [language, setLanguage] = useState("en");
   const [activeLink, setActiveLink] = useState("");
@@ -105,12 +109,12 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="container mx-auto  px-6 font-roboto h-full overflow-auto">
+      <div className="mx-auto  px-6 font-roboto">
         <header className="fixed top-0 left-0 z-10 w-full bg-white bg-opacity-80 px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <img src={Logo} alt="Madurai city" className="size-12" />
-              <h1 className="text-[#21409A] font-medium text-lg my-4">
+              <img src={Logo} alt="Madurai city" className="size-20" />
+              <h1 className="text-[#21409A] font-bold text-xl my-4">
                 {translations[language].title}
               </h1>
             </div>
@@ -127,9 +131,7 @@ const LandingPage = () => {
               <a
                 onClick={() => handleLinkClick("/")}
                 className={`px-6 py-2 rounded-lg ${
-                  activeLink === "/"
-                    ? "text-white bg-[#21409A]"
-                    : "text-black"
+                  activeLink === "/" ? "text-white bg-[#21409A]" : "text-black"
                 }`}
               >
                 {translations[language].dashboard}
@@ -149,7 +151,7 @@ const LandingPage = () => {
                 <select
                   onChange={handleLanguageChange}
                   value={language}
-                  className="px-2 py-1 rounded-lg font-medium"
+                  className="px-2 py-1 rounded-lg font-medium border-none bg-transparent"
                 >
                   <option value="en">ENG</option>
                   <option value="ta">தமிழ்</option>
@@ -161,15 +163,11 @@ const LandingPage = () => {
 
         {/* homepage content */}
         {activeLink === "" && (
-          <main className="pt-16 space-y-20 ">
-            <section className="relative ">
+          <main className="pt-20 space-y-40 ">
+            <section className="relative   ">
               <div>
-                <img
-                  src={MsclMain}
-                  alt="Madurai city"
-                  className="w-full h-auto"
-                />
-                <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 grid grid-cols-3 gap-6 bg-white p-6 w-4/5 rounded-xl shadow-md">
+                <img src={MsclMain} alt="Madurai city" className="" />
+                <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 grid grid-cols-3 gap-6 bg-white p-6 w-4/5 rounded-xl shadow-md">
                   <button className="px-8 py-8 flex flex-col items-center justify-center gap-2 bg-[#E6D590] rounded-lg">
                     <div className="bg-[#21409A] rounded-full px-4 py-4 ">
                       <TbBulb className="size-6 text-[#E6D590]" />
@@ -196,25 +194,80 @@ const LandingPage = () => {
               <h2 className="font-bold text-2xl mb-8">
                 {translations[language].stepsTitle}
               </h2>
-              <div className="grid grid-cols-2 gap-10 w-4/5 mx-auto">
-                {[1, 2, 4, 3].map((step) => (
-                  <div
-                    className="flex  justify-center items-center p-6 bg-[#FFF5CE] rounded-lg"
-                    key={step}
-                  >
-                    <div className="bg-white shadow-md px-8 py-10 text-center w-full space-y-2">
-                      <h3 className="font-bold text-xl text-[#21409A]">
-                        {translations[language][`step${step}`].title}
-                      </h3>
-                      <h1 className="font-semibold text-lg">
-                        {translations[language][`step${step}`].heading}
-                      </h1>
-                      <p className="text-[#575757] font-normal text-sm">
-                        {translations[language][`step${step}`].description}
-                      </p>
-                    </div>
+              <div className="grid grid-cols-5 items-center gap-4 w-4/5 mx-auto ">
+                {/* Step 1 */}
+                <div className="col-span-2 flex justify-center items-center p-6 bg-[#FFF5CE] rounded-lg">
+                  <div className="bg-white shadow-md px-8 py-10 text-center w-full space-y-2">
+                    <h3 className="font-bold text-xl text-[#21409A]">
+                      {translations[language].step1.title}
+                    </h3>
+                    <h1 className="font-semibold text-lg">
+                      {translations[language].step1.heading}
+                    </h1>
+                    <p className="text-[#575757] font-normal text-sm">
+                      {translations[language].step1.description}
+                    </p>
                   </div>
-                ))}
+                </div>
+
+                {/* Arrow */}
+                <div className="flex items-center ">
+                  <div className="border-t-2 border-dashed border-gray-600 flex-grow ml-6"></div>
+                  <div className="border-t-[8px] border-b-[8px] border-l-[12px] border-transparent border-l-gray-600"></div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="col-span-2 flex justify-center items-center p-6 bg-[#FFF5CE] rounded-lg">
+                  <div className="bg-white shadow-md px-8 py-10 text-center w-full space-y-2">
+                    <h3 className="font-bold text-xl text-[#21409A]">
+                      {translations[language].step2.title}
+                    </h3>
+                    <h1 className="font-semibold text-lg">
+                      {translations[language].step2.heading}
+                    </h1>
+                    <p className="text-[#575757] font-normal text-sm">
+                      {translations[language].step2.description}
+                    </p>
+                  </div>
+                </div>
+                {/* Step 4 */}
+                <div className="col-span-2 flex justify-center items-center p-6 bg-[#FFF5CE] rounded-lg">
+                  <div className="bg-white shadow-md px-8 py-10 text-center w-full space-y-2">
+                    <h3 className="font-bold text-xl text-[#21409A]">
+                      {translations[language].step4.title}
+                    </h3>
+                    <h1 className="font-semibold text-lg">
+                      {translations[language].step4.heading}
+                    </h1>
+                    <p className="text-[#575757] font-normal text-sm">
+                      {translations[language].step4.description}
+                    </p>
+                  </div>
+                </div>
+
+    
+                
+
+                {/* Step 3 */}
+                <div className="flex items-center rotate-180 ml-6 ">
+                <div className="border-t-2 border-dashed border-gray-600 flex-grow "></div>
+                  <div className="border-t-[8px] border-b-[8px] border-l-[12px] border-transparent border-l-gray-600 "></div>
+               
+                </div>
+
+                <div className="col-span-2 flex justify-center items-center p-6 bg-[#FFF5CE] rounded-lg">
+                  <div className="bg-white shadow-md px-8 py-10 text-center w-full space-y-2">
+                    <h3 className="font-bold text-xl text-[#21409A]">
+                      {translations[language].step3.title}
+                    </h3>
+                    <h1 className="font-semibold text-lg">
+                      {translations[language].step3.heading}
+                    </h1>
+                    <p className="text-[#575757] font-normal text-sm">
+                      {translations[language].step3.description}
+                    </p>
+                  </div>
+                </div>
               </div>
             </section>
           </main>
@@ -222,21 +275,57 @@ const LandingPage = () => {
 
         {/* Contact us content */}
         {activeLink === "/contactus" && (
-          <main className="pt-16">
-            <ContactUs language={language}/>
+          <main className="pt-20">
+            <ContactUs language={language} />
+          </main>
+        )}
+        {/* down navbar contents */}
+        {activeLink === "/terms" && (
+          <main className="pt-20">
+            <Terms language={language} />
+          </main>
+        )}
+        {activeLink === "/privacy" && (
+          <main className="pt-20">
+            <PrivacyPolicy language={language} />
+          </main>
+        )}
+        {activeLink === "/aboutus" && (
+          <main className="pt-20">
+            <AboutUs language={language} />
           </main>
         )}
       </div>
-      <footer className="mt-12 text-white bg-[#21409A] font-roboto">
+      <footer className="mt-12   text-white bg-[#21409A] font-roboto ">
         <div className="mx-8 py-6 space-y-4">
           <p className="font-medium text-xl">
             {translations[language].quickLinks}
           </p>
           <nav className="flex justify-between font-normal text-sm text-[#D9D9D9] py-4">
-            <a href="/terms">{translations[language].terms}</a>
-            <a href="/privacy">{translations[language].privacy}</a>
-            <a href="/contactus">{translations[language].contactUs}</a>
-            <a href="/aboutus">{translations[language].aboutUs}</a>
+            <button
+              onClick={() => handleLinkClick("/terms")}
+              className="text-left hover:underline"
+            >
+              {translations[language]?.terms || "Terms and Conditions"}
+            </button>
+            <button
+              onClick={() => handleLinkClick("/privacy")}
+              className="text-left hover:underline"
+            >
+              {translations[language].privacy}
+            </button>
+            <button
+              onClick={() => handleLinkClick("/contactus")}
+              className="text-left hover:underline"
+            >
+              {translations[language].contactUs}
+            </button>
+            <button
+              onClick={() => handleLinkClick("/aboutus")}
+              className="text-left hover:underline"
+            >
+              {translations[language].aboutUs}
+            </button>
           </nav>
           <hr className="border-[#8C8C8C] border-0.5 mr-20" />
           <p className="text-[#8B8B8B] py-3 text-sm font-normal">
@@ -244,7 +333,6 @@ const LandingPage = () => {
           </p>
         </div>
       </footer>
-      ;
     </>
   );
 };

@@ -22,11 +22,11 @@ const ContactUs = ({ language }) => {
   };
 
   return (
-    <div className="flex gap-10 items-center">
-      <div className="">
-        <img src={MsclMain1} alt="Madurai Image" />
+    <div className="flex justify-between items-center">
+      <div className="w-2/5 mx-6">
+        <img src={MsclMain1} alt="Madurai Image"/>
       </div>
-      <div className="w-full">
+      <div className="w-1/2 mx-6">
         <form className="grid gap-5">
           <input
             type="text"
