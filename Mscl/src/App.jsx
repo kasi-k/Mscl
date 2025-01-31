@@ -1,14 +1,15 @@
-import React from 'react'
-import LandingPage from './pages/landing page/LandingPage'
-import Pdf from './pages/landing page/pdf download/Pdf'
+import React from "react";
+import LandingPage from "./pages/landing page/LandingPage";
+import GrievanceAudio from "./pages/grievance/GrievanceAudio";
 
 const App = () => {
   return (
     <>
-  {/* <LandingPage/> */}
-  <Pdf/>
+      {/* <LandingPage/> */}
+      {/* <Pdf /> */}
+      <GrievanceAudio />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
